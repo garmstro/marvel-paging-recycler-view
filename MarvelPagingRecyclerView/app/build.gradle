@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.runbikenerd.marvelpagingrecyclerview"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField 'String', "TimeStamp", MarvelPagingRecyclerView_TimeStamp
+            buildConfigField 'String', "PublicKey", MarvelPagingRecyclerView_PublicKey
+            buildConfigField 'String', "Hash", MarvelPagingRecyclerView_Hash
+            resValue 'string', "time_stamp", MarvelPagingRecyclerView_TimeStamp
+            resValue 'string', "public_key", MarvelPagingRecyclerView_PublicKey
+            resValue 'string', "hash", MarvelPagingRecyclerView_Hash
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "TimeStamp", MarvelPagingRecyclerView_TimeStamp
+            buildConfigField 'String', "PublicKey", MarvelPagingRecyclerView_PublicKey
+            buildConfigField 'String', "Hash", MarvelPagingRecyclerView_Hash
+            resValue 'string', "time_stamp", MarvelPagingRecyclerView_TimeStamp
+            resValue 'string', "public_key", MarvelPagingRecyclerView_PublicKey
+            resValue 'string', "hash", MarvelPagingRecyclerView_Hash
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archLifecycleVersion"
+    implementation "androidx.paging:paging-runtime-ktx:2.1.0"
+    implementation "com.squareup.retrofit2:retrofit:2.4.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.4.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.11.0"
+    implementation "org.koin:koin-android:1.0.2"
+    implementation "org.koin:koin-android-scope:1.0.2"
+    implementation "org.koin:koin-android-viewmodel:1.0.2"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
